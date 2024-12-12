@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+  overflow: hidden;
+}
+.image-left{
+  float: left;
+  width: 48%;
+}
+.image-left svg{
+  width: 60vmin;
+  height: 60vmin;
+}
+.container{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  width: 120vmin;
+  height: 60vmin;
+  background: rgba(58, 38, 38, 0.1);
+  box-shadow: 2px 2px 4px #0d1d31;
+}
+.login-wrapper{
+  font-size: 2vmin;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  width: 40%;
+  height: 50vmin;
+  margin: 0 auto;
+  padding: 3vmin;
+  color: white;
+  float: right;
+}
+.filter{
+  color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+#type{
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 2vmin;
+  width: 40vmin;
+  height: 4vmin;
+  padding: 0.5vmin;
+  margin: 1vmin 2vmin 2vmin 0;
+  border-radius: 5px;
+  color:white;
+}
+select option{
+  background: #0d1d31;
+}
+select option:hover{
+  background: #0d1d31;
+  border: #fff;
+}
+
+.input-login{
+  outline: none;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  padding-top: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  
+}
+.item-wrapper{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  width: 38vmin;
+  height: 5vmin;
+  padding: 1vmin;
+  margin: 2vmin 0 2vmin 0;
+}
+.item-wrapper:hover{
+  width: 42vmin;
+  font-size: 2.5vmin;
+}
+
+label, input{
+  display: block;
+}
+
+.form-data{
+  width: 80%;
+  margin: 0 auto;
+}
+#button{
+  border: none;
+  background-color: #6C63FF;
+  border: 1px solid #0d1d31;
+  border-radius: 5%;
+  width: 100%;
+  height: 5vmin;
+  padding: 3px;
+  font-size: 2vmin;
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px #0d1d31;
+}
+#button:hover{
+  color: #0d1d31;
+}
+.title{
+  width: 40vmin;
+  margin: 0 auto;
+  display: inline-block;
+}
+#title{
+  display: block;
+  font-size: 4vmin;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#span{
+  width: 8vmin;
+  height: 1px;
+  background-color: #DF0103;
+  text-align: center;
+  margin-top: 0;
+}
+.remenber,
+.forget{
+  width: 45%;
+  max-height: 5vmin;
+}
+.remenber{
+  float: left;
+}
+.forget{
+  float: right;
+}
+.remenber{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.remenber label, #lembre{
+  display: inline-block;
+}
+.remenber label{
+  font-size: 1.6vmin;
+}
+#lembre{
+  width: 1.9vmin;
+  height: 100%;
+  margin: 0;
+}
+#lembre:checked{
+  background-color: #0d1d31;
+}
+.forget a{
+  font-size: 1.6vmin;
+  color: red;
+  float: right;
+}
+#password{
+  width: 80%;
+  display: inline-block;
+
+}
+#togglePassword{
+  position: absolute;
+  float: right;
+  text-align: end;
+ /* margin-left: -40px; */
+  cursor: pointer; 
+  width: 4%
+}
+@media (width: 1000px) {
+
+    #span,
+    #title{
+      text-align: center;
+      border: 1px solid red;
+    }
+    .image-left svg{
+     display: none;
+    }
+  
+    .login-wrapper{
+      width: 90%;
+      margin: 0 auto;
+    }
+    #button{
+      width:100%;
+      margin-top: 1vmin;
+      border: 1px solid red;
+    }
+    .item-wrapper{
+      width: 96%;
+      padding: 4px;
+      margin: 0 auto 2vmin auto;
+    }
+    .item-wrapper:hover{
+      width: 96%;
+    }
+    #type{
+      width: 96%;
+      margin-bottom: 6vmin;
+    }
+    .form-data{
+      width: 100%;
+    }
+    
+}
+/*Responsive website*/
+@media only screen and (max-width: 800px) {
+
+  #span,
+  #title{
+    text-align: center;
+  }
+  .image-left svg{
+   display: none;
+  }
+
+  .login-wrapper{
+    width: 90%;
+    margin: 0 auto;
+  }
+  #button{
+    width:100%;
+    margin-top: 1vmin;
+  }
+  .item-wrapper{
+    width: 96%;
+    padding: 4px;
+    margin: 0 auto 2vmin auto;
+  }
+  .item-wrapper:hover{
+    width: 96%;
+  }
+  #type{
+    width: 96%;
+    margin-bottom: 6vmin;
+  }
+  .form-data{
+    width: 100%;
+  }
+  
+}
