@@ -1,0 +1,8 @@
+.my-class {
+    background-color:#6366f1;
+    color: #fff; // Texto em branco para contraste
+  }
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
