@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Produtos - MercadoBom')
+
 @section('buttons')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="../css/create.css" rel="stylesheet">
+<link href="{{asset('../css/create.css')}}" rel="stylesheet">
+
 <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='{{ route('categorias.create') }}'">
     <i class='bx bx-folder-open'></i> Nova categoria
 </button>
@@ -12,15 +14,16 @@
 </button>
 <button type="button" class="btn btn-secondary btn-lg" disabled><i class='bx bx-edit'></i> Editar</button>
 @endsection
+
 @section('content')
 <!-- Conteúdo dos produtos -->
 
 <div id="content">
 <!--Deveria ter as informações de quem está vendendo, hora, opção de cancelar venda-->
     <h1>Editar Categoria</h1>
-    <form action="{{route('categorias.store') }}" method="POST">
-        @csrf
+    <form action="{{route('categorias.update', $categoria->id_categoria )}}" method="POST">
         @method('PUT')
+        @csrf
         <div class="itens-form">
                     <label  for="nome">Nome da Categoria:</label>
                     <input class="nome" type="text" id="nome" name="nome" placeholder="Digite aqui" value="{{old('nome', $categoria->nome)}}" required />

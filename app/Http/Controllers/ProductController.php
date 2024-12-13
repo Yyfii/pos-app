@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Categoria;
+use App\Models\Fornecedor;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -13,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        // Carrega os produtos junto com as informações das tabelas relacionadas
+        $products = Product::with(['categoria', 'fornecedor'])->paginate(10);
 
         // Verifica se há uma foto e, caso haja, converte para base64
         foreach ($products as $product) {
@@ -23,6 +26,7 @@ class ProductController extends Controller
         }
 
         return view('products.index', compact('products'));
+
     }
 
     /**
@@ -74,6 +78,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $request->validate([
             'foto_produto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'nome_produto' => 'required|max:100',
@@ -131,7 +136,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categorias = Categoria::all();
+        $fornecedores = Fornecedor::all();
+        return view('products.create', compact('categorias', 'fornecedores'));
     }
 
     /**
@@ -153,11 +160,14 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = Product::find($id);
+        $product = Product::with(['categoria', 'fornecedor'])->findOrFail($id);
+        $categorias = Categoria::all();
+        $fornecedores = Fornecedor::all();
+
         if (!$product) {
             return redirect()->route('products.index')->with('error', 'Produto não encontrado.');
         }
 
-        return view('products.edit', compact('product'));
+         return view('products.edit', compact('product', 'categorias', 'fornecedores'));
     }
 }

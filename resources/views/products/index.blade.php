@@ -17,6 +17,15 @@
 <!-- Conteúdo dos produtos -->
 
 <div id="content">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if($products->isEmpty())
+        <p class="text-center">Nenhum produto encontrado. <a href="{{ route('products.create') }}">Adicione um novo.</a></p>
+    @else
     <table class="table table-striped">
     <thead>
         <tr>
@@ -45,8 +54,8 @@
             <td>{{$product-> nome}}</td>
             <td>{{$product-> preco}}</td>
             <td>{{$product-> quantidade_em_estoque}}</td>
-            <td>{{$product-> id_categoria}}</td>
-            <td>{{$product-> id_fornecedor}}</td>
+            <td>{{ $product->categoria ? $product->categoria->nome : 'N/A' }}</td>
+            <td>{{ $product->fornecedor ? $product->fornecedor->nome : 'N/A' }}</td>
             <td>{{$product-> data_criacao}}</td>
             <td>
                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -65,11 +74,16 @@
                   </form>
               </div>
             </td>
-
         </tr>
     @endforeach
     </tbody>
     </table>
+    <div class="d-flex">
+    <div class="mx-auto">
+    {{ $products->links() }}
+    </div>
+</div>
+    @endif
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 @endsection

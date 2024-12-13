@@ -12,7 +12,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::paginate(10);
         return view('categorias.index', compact('categorias'));
     }
 
@@ -32,16 +32,12 @@ class CategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $categoria = Categoria::find($id);
-        return view('categorias.show', compact('categorias'));
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Categoria $categoria)
     {
         $request->validate([
             'nome' => 'required|max:100',
@@ -67,8 +63,16 @@ class CategoriaController extends Controller
         return view('categorias.create');
     }
 
+    public function show(string $id)
+    {
+        $categoria = Categoria::find($id);
+        return view('categorias.show', compact('categoria'));
+    }
+
     public function edit($id){
         $categoria = Categoria::find($id);
-        return view('categorias.edit', compact('categorias'));
-    }
+        return view('categorias.edit', compact('categoria'));
+    }    
+    
+
 }

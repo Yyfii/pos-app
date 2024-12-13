@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\FornecedorController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\URL;
 
@@ -16,8 +17,6 @@ use Illuminate\Support\Facades\URL;
 | contains the "web" middleware group. Now create something great!
 |
 */
-URL::forceScheme('https');
-
 
 /// Rota para listar os produtos
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -48,10 +47,27 @@ Route::get('/categorias/create', CategoriaController::class . '@create')->name('
 // adds a post to the database
 Route::post('/categorias', CategoriaController::class .'@store')->name('categorias.store');
 // returns a page that shows a full post
-Route::get('/categorias/{id}', CategoriaController::class .'@show')->name('categorias.show');
+Route::get('/categorias/{categoria}', CategoriaController::class .'@show')->name('categorias.show');
 // returns the form for editing a post
-Route::get('/categorias/{id}/edit', CategoriaController::class .'@edit')->name('categorias.edit');
+Route::get('/categorias/{categoria}/edit', CategoriaController::class .'@edit')->name('categorias.edit');
 // updates a post
-Route::put('/categorias/{id}', CategoriaController::class .'@update')->name('categorias.update');
+Route::put('/categorias/{categoria}', [CategoriaController::class .'update'])->name('categorias.update');
 // deletes a post
-Route::delete('/categorias/{id}', CategoriaController::class .'@destroy')->name('categorias.destroy');
+Route::delete('/categorias/{categoria}', CategoriaController::class .'@destroy')->name('categorias.destroy');
+
+
+
+//Fornecedor
+Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores.index');
+
+Route::get('/fornecedores/create', FornecedorController::class . '@create')->name('fornecedores.create');
+
+Route::post('/fornecedores', FornecedorController::class .'@store')->name('fornecedores.store');
+
+Route::get('/fornecedores/{fornecedor}', FornecedorController::class .'@show')->name('fornecedores.show');
+
+Route::get('/fornecedores/{fornecedor}/edit', FornecedorController::class .'@edit')->name('fornecedores.edit');
+
+Route::put('/fornecedores/{fornecedor}', [FornecedorController::class, 'update'])->name('fornecedores.update');
+
+Route::delete('/fornecedores/{fornecedor}', FornecedorController::class .'@destroy')->name('fornecedores.destroy');
