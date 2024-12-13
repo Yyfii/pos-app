@@ -10,6 +10,17 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'Produtos';
+
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class, 'fornecedor_id');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'id_categoria');
+    }
+    
     protected $primaryKey = 'id_produto';
     public $timestamps = false;
     protected $fillable = [

@@ -5,9 +5,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
-        <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="../css/custom.css">
         
+        <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{asset('../css/custom.css')}}">
+
         <title>@yield('title')</title>
     </head>
     <body id="body-pd">
@@ -50,7 +51,7 @@
         </nav>
     </div>
     <!--Container Main start-->
-    <div class="height-100 width-80 bg-light">
+    <div class="height-130 width-80 bg-light">
         <div class="container w-100" style="margin-top: 70px;">
         @yield('buttons')
         </div>
@@ -60,6 +61,6 @@
         <footer>
             <p>MercadoBom &copy; 2024</p>
         </footer>
-        <script src="../js/menu.js"></script>
+    <script src="{{asset('/js/menu.js')}}"></script>
     </body>
 </html>

@@ -3,7 +3,7 @@
 @section('title', 'Produtos - MercadoBom')
 @section('buttons')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="../css/create.css" rel="stylesheet">
+<link href="{{asset('../css/create.css')}}" rel="stylesheet">
 
 <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='{{ route('products.create') }}'">
     <i class='bx bx-folder-open'></i> Novo produto
@@ -20,11 +20,11 @@
   <div id="content">
          <!--Deveria ter as informações de quem está vendendo, hora, opção de cancelar venda-->
             <h1>Cadastrar Produto</h1>
-                <form action="{{route('products.store') }}" method="POST">
+                <form action="{{route('products.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="itens-form">
                 <div class="input-group mb-3">
-                <input type="file" name="foto_produto" class="form-control" id="inputGroupFile02">
+                <input type="file" name="foto_produto" class="form-control" id="inputGroupFile02" accept="image/*">
                 <label class="input-group-text" for="inputGroupFile02">Foto produto</label>
                 </div>
                     <label  for="nome_produto">Nome do Produto:</label>
@@ -54,7 +54,12 @@
                     <div class="categorias">
                     <label for="categoria">Categoria: </label>
                     <select name="categoria_id" class="select" id="categoria" required>
-                        <option value="1" selected>1</option>
+                        <option selected>Selecione</option>
+                            @foreach ($categorias as $categoria)
+                                <option value="{{ $categoria->id_categoria }}">
+                                {{ $categoria->nome }}
+                                </option>
+                            @endforeach
                     </select>
                     </div>
 
@@ -62,7 +67,11 @@
                     <label for="fornecedor">Fornecedor: </label>
                     <select name="fornecedor_id" id="fornecedor" class="select">
                         <option selected>Selecione</option>
-                        <option value='1'>1</option>
+                        @foreach ($fornecedores as $fornecedor)
+                            <option value="{{ $fornecedor->id_fornecedor }}">
+                            {{ $fornecedor->nome }}
+                            </option>
+                        @endforeach
                     </select>
                     </div>
                     <div class="button-wrapper">
